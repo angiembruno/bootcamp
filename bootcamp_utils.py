@@ -10,21 +10,8 @@ sns.set(style='whitegrid', palette=colors,
         rc={'axes.labelsize': 20, 'axes.titlesize': 20})
 
 
-#load in data
-xa_low = np.loadtxt('data/xa_low_food.csv', comments='#')
-xa_high = np.loadtxt('data/xa_high_food.csv', comments='#')
-
-#format data
-x = np.sort(xa_low)
-y = np.arange (1, len(xa_low)+1 / len(xa_low))
-
-xh = np.sort(xa_high)
-yh = np.arange (1, len(xa_high)+1 / len(xa_high))
-
-
-#paint data
-fig, ax = plt.subplots(1,1, figsize=(10,3))
-ax.set_title('Awesome plot')
-_ = ax.plot(x, y, marker='o', markersize=10, linestyle='none')
-_ = ax.plot(xh,yh, marker='o', markersize=10, linestyle='none')
-plt.show()
+def ecdf(data):
+    """Compute x, y values for an empirical distribution function."""
+    x = np.sort(data)
+    y = np.arange(1, len(data)+1) / len(data)
+    return x, y
